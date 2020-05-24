@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 @SpringBootApplication
 @EntityScan("com.hashanr.microservice.commons.model")
+@EnableResourceServer
 public class MobileInfoApplication {
 
 	public static void main(String[] args) {
