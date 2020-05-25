@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.3.0.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id "com.palantir.docker" version "0.25.0"
 }
 
 group = 'com.hashanr.mobileinfo'
@@ -14,6 +15,11 @@ repositories {
 }
 
 dependencies {
+	
+	
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+
 	
 	
 	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-oauth2
@@ -44,4 +50,14 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+
+docker {
+	
+	name "${project.name}"
+	tag 'DockerHub', "hashanr/microservices:${project.version}"
+	dockerfile file('src/docker/Dockerfile')
+	copySpec.from(jar).rename(".*","app.jar")
+	buildArgs(['JAR_FILE': "app.jar"])
 }
