@@ -11,3 +11,5 @@ security:
     client:
       client-id: mobile
       client-secret: pin
+server:
+  port: 8080
