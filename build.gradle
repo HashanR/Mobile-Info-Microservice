@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 	id "com.palantir.docker" version "0.25.0"
+	id 'net.researchgate.release' version '2.8.1'
 }
 
 group = 'com.hashanr.mobileinfo'
@@ -65,3 +66,49 @@ docker {
 	copySpec.from(jar).rename(".*","app.jar")
 	buildArgs(['JAR_FILE': "app.jar"])
 }
+
+
+
+release {
+    failOnCommitNeeded = true
+    failOnPublishNeeded = true
+    failOnSnapshotDependencies = true
+    failOnUnversionedFiles = true
+    failOnUpdateNeeded = true
+    revertOnFail = true
+    preCommitText = ''
+    preTagCommitMessage = '[Gradle Release Plugin] - pre tag commit: '
+    tagCommitMessage = '[Gradle Release Plugin] - creating tag: '
+    newVersionCommitMessage = '[Gradle Release Plugin] - new version commit: '
+    tagTemplate = '${version}'
+    versionPropertyFile = 'gradle.properties'
+    versionProperties = []
+    //snapshotSuffix = '-SNAPSHOT'
+    buildTasks = ['build']
+   // ignoredSnapshotDependencies = true
+    //pushReleaseVersionBranch = false
+    scmAdapters = [
+        net.researchgate.release.GitAdapter,
+        net.researchgate.release.SvnAdapter,
+        net.researchgate.release.HgAdapter,
+        net.researchgate.release.BzrAdapter
+    ]
+
+    git {
+        requireBranch = 'master'
+        pushToRemote = 'origin'
+        pushToBranchPrefix = ''
+        commitVersionFileOnly = false
+        signTag = false
+    }
+
+    svn {
+        username = null
+        password = null
+        pinExternals = false   // allows to pin the externals when tagging, requires subversion client >= 1.9.0
+    }
+}
+
+
+
+
