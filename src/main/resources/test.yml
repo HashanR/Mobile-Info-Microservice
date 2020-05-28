@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: mobile-info
+  datasource:
+    url: jdbc:mysql://${DB_HOST}/${DB_NAME}?useSSL=false
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://authorization-server/oauth/check_token
+    client:
+      client-id: mobile
+      client-secret: pin
