@@ -34,10 +34,7 @@ dependencies {
 	
 	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-security
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-security', version: '2.2.1.RELEASE'
-	
-	
-	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-config-client
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-config-client', version: '2.2.2.RELEASE'
+
 	//Import commons domain dependency
 	compile group: 'com.hashanr.microservices', name: 'Mobile-Info-Commons' , version: '4.0'
 	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
