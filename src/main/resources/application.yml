@@ -10,7 +10,7 @@ spring:
 security:
   oauth2:
     resource:
-      token-info-uri: http://${AUTH_URL}/oauth/check_token
+      token-info-uri: http://${AUTH_SERVER}/oauth/check_token
     client:
       client-id: web
       client-secret: pin
