@@ -20,7 +20,6 @@ public class SubscriberController {
 	SubscriberService subscriberService;
 	
 	@GetMapping("v1/subscriber/{MSISDN}")
-	@PreAuthorize("hasAuthority('create_profile')")
 	public SubscriberData getSubscriber(@PathVariable int MSISDN) {
 		return subscriberService.getSubscriberInfo(MSISDN);
 	}

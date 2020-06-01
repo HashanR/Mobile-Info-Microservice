@@ -14,9 +14,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EntityScan("com.hashanr.microservice.commons.model")
 @EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableDiscoveryClient
-//@EnableSwagger2
+@EnableSwagger2
 public class MobileInfoApplication {
 
 	public static void main(String[] args) {
